@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { Client, Util } = require('discord.js');
 const client = new Discord.Client();
 const { PREFIX, GOOGLE_API_KEY } = require('./config');
-const prefix = '*'
+const prefix = '1'
 const YouTube = require('simple-youtube-api');
 const ytdl = require('ytdl-core');
 const youtube = new YouTube(GOOGLE_API_KEY);
@@ -15,9 +15,30 @@ const bot = new Discord.Client();
 const Baron = new Discord.Client();
  
  
- 
- 
- 
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame('| 1help |  | 1play ')
+  console.log('')
+  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
+  console.log(`[Start] ${new Date()}`);
+  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
+  console.log('')
+  console.log('╔[════════════════════════════════════]╗');
+  console.log(`Logged in as * [ " ${client.user.username} " ]`);
+  console.log('')
+  console.log('Informations :')
+  console.log('')
+  console.log(`servers! [ " ${client.guilds.size} " ]`);
+  console.log(`Users! [ " ${client.users.size} " ]`);
+  console.log(`channels! [ " ${client.channels.size} " ]`);
+  console.log('╚[════════════════════════════════════]╝')
+  console.log('')
+  console.log('╔[════════════]╗')
+  console.log(' Bot Is Online')
+  console.log('╚[════════════]╝')
+  console.log('')
+  console.log('')
+}); 
  
 client.on('warn', console.warn);
  
@@ -213,7 +234,40 @@ function play(guild, song) {
 
 
 
+ client.on('message', message => {
+    if(message.content.startsWith(prefix+'help')) {
+   const embed = new Discord.RichEmbed()
+.setColor('RANDOM')
+        .setDescription(`**
+╭━━╮╱╱╱╭╮
+┃╭╮┃╱╱╭╯╰╮
+┃╰╯╰┳━┻╮╭╯
+┃╭━╮┃╭╮┃┃
+┃╰━╯┃╰╯┃╰╮
+╰━━━┻━━┻━╯
 
+=-=-=-=-=  music's Commands.  =-=-=-=-=
+『 ${prefix}play ➾ Play a song by title or by name』
+『 ${prefix}skip ➾ To play the song』
+『 ${prefix}pa ➾ The song is temporaryا』
+『 ${prefix}resume ➾ To the mass of the song after its temporary suspension』
+『 ${prefix}vol ➾ To change the volume 100 - 0』
+『 ${prefix}stop ➾ Take out the bot from the room』
+『 ${prefix}np ➾ To find out the song that is running』
+『 ${prefix}q ➾ To find the operating system』
+`)
+    message.author.send(embed)
+}
+});
 
+client.on('message', message => {
+     if (message.content === (prefix + "help")) {
+     let embed = new Discord.RichEmbed()
+  .setAuthor(message.author.username)
+  .setColor("#8650a7")
+  .addField("Done" , " We have been sent to your")
+  message.channel.sendEmbed(embed);
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
